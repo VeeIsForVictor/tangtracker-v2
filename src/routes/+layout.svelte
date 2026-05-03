@@ -6,4 +6,8 @@
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
-{@render children()}
+
+<div class="m-auto flex h-dvh flex-col items-center justify-center">
+	{@render children()}
+</div>
+

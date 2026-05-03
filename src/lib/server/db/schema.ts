@@ -1,7 +1,7 @@
 import { pgTable, text, uuid, varchar, decimal, pgEnum, timestamp } from 'drizzle-orm/pg-core';
 import { user } from './auth.schema';
 
-const debtStatus = pgEnum('debt_status', [
+export const debtStatus = pgEnum('debt_status', [
 	'pending_adoption',
 	'unpaid',
 	'payment_pending',
@@ -21,7 +21,7 @@ export const debt = pgTable('debt', {
 	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
 });
 
-const systemEvent = pgEnum('system_event', [
+export const systemEvent = pgEnum('system_event', [
 	'debt_created',
 	'debt_adopted',
 	'marked_as_paid',

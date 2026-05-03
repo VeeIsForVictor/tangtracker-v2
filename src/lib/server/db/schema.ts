@@ -6,7 +6,7 @@ const debtStatus = pgEnum('debt_status', [
 	'unpaid',
 	'payment_pending',
 	'settled'
-])
+]);
 
 export const debt = pgTable('debt', {
 	id: uuid('id').defaultRandom().primaryKey(),
@@ -18,8 +18,8 @@ export const debt = pgTable('debt', {
 	description: text('description'),
 	status: debtStatus('status').notNull(),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow(),
-	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow(),
-})
+	updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow()
+});
 
 const systemEvent = pgEnum('system_event', [
 	'debt_created',
@@ -28,15 +28,17 @@ const systemEvent = pgEnum('system_event', [
 	'confirmed',
 	'disputed',
 	'cancelled'
-])
+]);
 
 export const message = pgTable('message', {
 	id: uuid('id').defaultRandom().primaryKey(),
-	debtId: uuid('debt_id').references(() => debt.id).notNull(),
+	debtId: uuid('debt_id')
+		.references(() => debt.id)
+		.notNull(),
 	senderId: uuid('sender_id').references(() => user.id),
 	systemEvent: systemEvent('system_event'),
 	content: text('content'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow()
-})
+});
 
 export * from './auth.schema';

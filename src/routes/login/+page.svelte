@@ -30,7 +30,7 @@
 	<h1 class="text-3xl">Welcome back!</h1>
 	<p>Login to your Account</p>
     <form
-        class="p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/60 w-md"
+        class="p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/60"
         onsubmit={(e) => {
             e.preventDefault()
             e.stopPropagation()

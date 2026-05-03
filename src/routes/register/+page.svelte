@@ -33,7 +33,7 @@
 	<h1 class="text-3xl">Make a new account</h1>
 	<p>Start tracking right away!</p>
     <form
-        class="p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/60 w-md"
+        class="p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/60"
         onsubmit={(e) => {
             e.preventDefault()
             e.stopPropagation()

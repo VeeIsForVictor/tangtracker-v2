@@ -20,10 +20,10 @@
 	$effect(() => {
 		switch (display) {
 			case 'filled':
-				setClass = 'p-2 w-full rounded-lg bg-white text-black';
+				setClass = 'flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg bg-white text-black';
 				break;
 			case 'outline':
-				setClass = 'p-2 w-full rounded-lg bg-none border-gray-200 border-2';
+				setClass = 'flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg bg-none border-gray-200 border-2';
 				break;
 		}
 	});

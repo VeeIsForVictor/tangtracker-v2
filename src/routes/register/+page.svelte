@@ -1,5 +1,6 @@
 <script lang="ts">
     import * as v from 'valibot';
+    import "iconify-icon";
 	import { createForm } from "@tanstack/svelte-form";
 	import Button from '$lib/components/Button.svelte';
 	import { authClient } from '$lib/auth-client';
@@ -98,6 +99,11 @@
                 {/if}
             {/snippet}
         </form.Field>
-        <Button display="filled" type="submit" bind:disabled={isAuthPending}>Register</Button>
+        <Button display="filled" type="submit" bind:disabled={isAuthPending}>
+            {#if isAuthPending}
+                <iconify-icon icon="svg-spinners:blocks-shuffle-2" width="24" height="24"></iconify-icon>
+            {/if}
+            Register
+        </Button>
     </form>
 </div>

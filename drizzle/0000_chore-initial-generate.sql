@@ -1,3 +1,5 @@
+CREATE TYPE "public"."debt_status" AS ENUM('pending_adoption', 'unpaid', 'payment_pending', 'settled');--> statement-breakpoint
+CREATE TYPE "public"."system_event" AS ENUM('debt_created', 'debt_adopted', 'marked_as_paid', 'confirmed', 'disputed', 'cancelled');--> statement-breakpoint
 CREATE TABLE "debt" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"share_token" varchar,

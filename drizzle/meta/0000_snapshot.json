@@ -1,5 +1,5 @@
 {
-  "id": "195e908d-1001-4ea7-b0b1-98c237c7b804",
+  "id": "2560498d-1c2a-4ca4-be47-4a2695f0b0de",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -543,7 +543,30 @@
       "isRLSEnabled": false
     }
   },
-  "enums": {},
+  "enums": {
+    "public.debt_status": {
+      "name": "debt_status",
+      "schema": "public",
+      "values": [
+        "pending_adoption",
+        "unpaid",
+        "payment_pending",
+        "settled"
+      ]
+    },
+    "public.system_event": {
+      "name": "system_event",
+      "schema": "public",
+      "values": [
+        "debt_created",
+        "debt_adopted",
+        "marked_as_paid",
+        "confirmed",
+        "disputed",
+        "cancelled"
+      ]
+    }
+  },
   "schemas": {},
   "sequences": {},
   "roles": {},

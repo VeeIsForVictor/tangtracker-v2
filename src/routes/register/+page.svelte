@@ -1,6 +1,7 @@
 <script lang="ts">
     import * as v from 'valibot';
 	import { createForm } from "@tanstack/svelte-form";
+	import Button from '$lib/components/Button.svelte';
 
     const form = createForm(() => ({
         defaultValues: {
@@ -13,7 +14,7 @@
     }))
 </script>
 
-<div class="flex flex-col items-center gap-y-2 text-center">
+<div class="flex flex-col items-center text-center">
 	<h1 class="text-3xl">Make a new account</h1>
 	<p>Start tracking right away!</p>
     <form
@@ -41,6 +42,13 @@
                         oninput={(e) => field.handleChange((e.target as HTMLInputElement).value)}
                     />
                 </div>
+                {#if field.state.meta.errors.length != 0}
+                    <div class="h-8 text-sm">
+                        {#each field.state.meta.errors as error (error?.message)}
+                            <p class="text-red-600">{error?.message}</p>
+                        {/each}
+                    </div>
+                {/if}
             {/snippet}
         </form.Field>
         <form.Field 
@@ -64,7 +72,15 @@
                         type="password"
                     />
                 </div>
+                {#if field.state.meta.errors.length != 0}
+                    <div class="h-8 text-sm">
+                        {#each field.state.meta.errors as error (error?.message)}
+                            <p class="text-red-600">{error?.message}</p>
+                        {/each}
+                    </div>
+                {/if}
             {/snippet}
         </form.Field>
+        <Button display="filled" type="submit">Register</Button>
     </form>
 </div>

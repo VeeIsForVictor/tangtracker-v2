@@ -10,13 +10,14 @@
 
     const form = createForm(() => ({
         defaultValues: {
+            name: '',
             email: '',
             password: '',
         },
-        onSubmit: async ({ value: { email, password } }) => {
+        onSubmit: async ({ value: { name, email, password } }) => {
             isAuthPending = true;
             const { error } = await authClient.signUp.email({
-                name: '',
+                name,
                 email,
                 password
             })
@@ -39,10 +40,36 @@
             form.handleSubmit()
         }}
     >
+        <form.Field
+            name="name"
+            validators={{
+                onBlur: v.string()
+            }}
+        >
+            {#snippet children(field)}
+                <div class="flex flex-row items-center gap-x-2 w-full">
+                    <label for={field.name}>Name:</label>
+                    <input
+                        class="bg-gray-800/20 rounded-lg p-1 w-full"
+                        name={field.name}
+                        value={field.state.value}
+                        onblur={field.handleBlur}
+                        oninput={(e) => field.handleChange((e.target as HTMLInputElement).value)}
+                    />
+                </div>
+                {#if field.state.meta.errors.length != 0}
+                    <div class="h-8 text-sm">
+                        {#each field.state.meta.errors as error (error?.message)}
+                            <p class="text-red-600">{error?.message}</p>
+                        {/each}
+                    </div>
+                {/if}
+            {/snippet}
+        </form.Field>
         <form.Field 
             name="email"
             validators={{
-                onChange: v.pipe(v.string(), v.email('Must be a valid email'))
+                onBlur: v.pipe(v.string(), v.email('Must be a valid email'))
             }}
         >
             {#snippet children(field)}
@@ -68,7 +95,7 @@
         <form.Field 
             name="password"
             validators={{
-                onChange: v.pipe(
+                onBlur: v.pipe(
                     v.string(), 
                     v.minLength(8, 'Must be at least 8 characters'),
                 )

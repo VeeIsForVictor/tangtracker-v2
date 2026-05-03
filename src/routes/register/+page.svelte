@@ -15,7 +15,8 @@
         },
         onSubmit: async ({ value: { email, password } }) => {
             isAuthPending = true;
-            const { error } = await authClient.signIn.email({
+            const { error } = await authClient.signUp.email({
+                name: '',
                 email,
                 password
             })
@@ -27,16 +28,11 @@
     }))
 </script>
 
-<div class="flex flex-col items-center text-center">
+<div class="flex flex-col items-center text-center gap-y-6">
 	<h1 class="text-3xl">Make a new account</h1>
 	<p>Start tracking right away!</p>
-    {#if typeof authError !== 'undefined'}
-        <div class="border-red-900 bg-red-800/40">
-            <p>{authError.message}</p>
-        </div>
-    {/if}
     <form
-        class="mt-8 p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/40 w-md"
+        class="p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/60 w-md"
         onsubmit={(e) => {
             e.preventDefault()
             e.stopPropagation()
@@ -106,4 +102,10 @@
             Register
         </Button>
     </form>
+
+    {#if typeof authError !== 'undefined'}
+        <div class="w-full p-5 rounded-2xl border-red-900 border-2 bg-red-800/40 text-red-400 text-center">
+            <p>!! {authError.message} !!</p>
+        </div>
+    {/if}
 </div>

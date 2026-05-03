@@ -15,6 +15,13 @@
       "when": 1777788291860,
       "tag": "0001_fix-correct-user-id-type",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777846995550,
+      "tag": "0002_feat-add-payment-methods",
+      "breakpoints": true
     }
   ]
 }

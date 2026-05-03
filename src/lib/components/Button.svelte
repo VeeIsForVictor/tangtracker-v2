@@ -15,26 +15,26 @@
 
 	const { disabled = $bindable(false), href = undefined, className = '', type = 'button', display, children }: Props = $props();
 
-	let setClass: ClassValue = $state('');
+	let setClass: ClassValue = $state('flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg');
 
 	$effect(() => {
 		switch (display) {
 			case 'filled':
-				setClass = 'flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg bg-white text-black';
+				setClass = cn(setClass, 'bg-white text-black');
 				break;
 			case 'outline':
-				setClass = 'flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg bg-none border-gray-200 border-2';
+				setClass = cn(setClass, 'bg-none border-gray-200 border-2');
 				break;
 		}
 	});
 </script>
 
 {#if typeof href !== 'undefined'}
-	<a {href} class={cn(className, setClass)}>
+	<a {href} class={cn(setClass, className)}>
 		{@render children()}
 	</a>
 {:else}
-	<button {type} {disabled} class={cn(className, setClass)}>
+	<button {type} {disabled} class={cn(setClass, className)}>
 		{@render children()}
 	</button>
 {/if}

@@ -35,7 +35,7 @@ export const message = pgTable('message', {
 	debtId: uuid('debt_id')
 		.references(() => debt.id)
 		.notNull(),
-	senderId: uuid('sender_id').references(() => user.id),
+	senderId: text('sender_id').references(() => user.id),
 	systemEvent: systemEvent('system_event'),
 	content: text('content'),
 	createdAt: timestamp('created_at', { withTimezone: true }).defaultNow()

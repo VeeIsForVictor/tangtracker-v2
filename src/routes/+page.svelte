@@ -9,7 +9,8 @@
         <Button display="filled" href="/login">
             Login
         </Button>
-        <button class="p-2 w-full rounded-lg bg-white text-black" type="button">Login</button>
-        <button class="p-2 w-full rounded-lg bg-none border-gray-200 border-2" type="button">Register</button>
+        <Button display="outline" href="/register">
+            Register
+        </Button>
     </div>
 </div>

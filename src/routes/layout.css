@@ -3,7 +3,7 @@
 @plugin '@tailwindcss/forms';
 
 @layer base {
-    html {
-        font-family: 'Kode Mono', sans-serif
-    }
+	html {
+		font-family: 'Kode Mono', sans-serif;
+	}
 }

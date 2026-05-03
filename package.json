@@ -50,6 +50,7 @@
 		"@tanstack/svelte-form": "^1.29.1",
 		"clsx": "^2.1.1",
 		"iconify-icon": "^3.0.2",
+		"plugins": "link:better-auth/client/plugins",
 		"tailwind-merge": "^3.5.0",
 		"valibot": "^1.3.1"
 	}

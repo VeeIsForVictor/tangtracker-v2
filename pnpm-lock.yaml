@@ -17,6 +17,9 @@ importers:
       iconify-icon:
         specifier: ^3.0.2
         version: 3.0.2
+      plugins:
+        specifier: link:better-auth/client/plugins
+        version: link:better-auth/client/plugins
       tailwind-merge:
         specifier: ^3.5.0
         version: 3.5.0

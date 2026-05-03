@@ -10,7 +10,7 @@
 
 <Background />
 
-<div class="m-auto flex h-dvh flex-col items-center justify-center">
+<div class="m-auto flex h-dvh flex-col items-center justify-center text-white">
 	{@render children()}
 </div>
 

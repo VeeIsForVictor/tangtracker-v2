@@ -9,14 +9,14 @@
 
 		/* Create the grid using two repeating linear gradients */
 		background-image:
-			linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+			linear-gradient(to right, rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
 
 		/* Apply the animation */
-		animation: move-grid 3s linear infinite;
+		animation: move-grid 6s linear infinite;
 
 		/* Styling for the container */
-		background-color: var(--color-orange-50);
+		background-color: var(--color-black);
 		height: 100vh;
 		width: 100%;
 	}

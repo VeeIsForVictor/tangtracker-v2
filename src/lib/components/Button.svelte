@@ -5,6 +5,7 @@
 	import type { ClassValue } from 'svelte/elements';
 
 	interface Props {
+		disabled?: boolean
 		display?: 'filled' | 'outline';
 		className?: ClassValue;
 		type?: 'button' | 'submit';
@@ -12,7 +13,7 @@
 		children: Snippet;
 	}
 
-	const { href = undefined, className = '', type = 'button', display, children }: Props = $props();
+	const { disabled = $bindable(false), href = undefined, className = '', type = 'button', display, children }: Props = $props();
 
 	let setClass: ClassValue = $state('');
 
@@ -33,7 +34,7 @@
 		{@render children()}
 	</a>
 {:else}
-	<button {type} class={cn(className, setClass)}>
+	<button {type} {disabled} class={cn(className, setClass)}>
 		{@render children()}
 	</button>
 {/if}

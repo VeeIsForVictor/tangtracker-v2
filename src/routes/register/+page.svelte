@@ -2,14 +2,26 @@
     import * as v from 'valibot';
 	import { createForm } from "@tanstack/svelte-form";
 	import Button from '$lib/components/Button.svelte';
+	import { authClient } from '$lib/auth-client';
+
+    let isAuthPending = $state(false);
+    let authError: { message?: string | undefined } | undefined = $state()
 
     const form = createForm(() => ({
         defaultValues: {
             email: '',
             password: '',
         },
-        onSubmit: () => {
-            
+        onSubmit: async ({ value: { email, password } }) => {
+            isAuthPending = true;
+            const { error } = await authClient.signIn.email({
+                email,
+                password
+            })
+            isAuthPending = false;
+            if (error) {
+                authError = error
+            }
         }
     }))
 </script>
@@ -17,6 +29,11 @@
 <div class="flex flex-col items-center text-center">
 	<h1 class="text-3xl">Make a new account</h1>
 	<p>Start tracking right away!</p>
+    {#if typeof authError !== 'undefined'}
+        <div class="border-red-900 bg-red-800/40">
+            <p>{authError.message}</p>
+        </div>
+    {/if}
     <form
         class="mt-8 p-4 rounded-xl flex flex-col items-center gap-y-4 bg-slate-900/40 w-md"
         onsubmit={(e) => {
@@ -81,6 +98,6 @@
                 {/if}
             {/snippet}
         </form.Field>
-        <Button display="filled" type="submit">Register</Button>
+        <Button display="filled" type="submit" bind:disabled={isAuthPending}>Register</Button>
     </form>
 </div>

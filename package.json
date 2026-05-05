@@ -49,6 +49,7 @@
 	"dependencies": {
 		"@tanstack/svelte-form": "^1.29.1",
 		"clsx": "^2.1.1",
+		"drizzle-valibot": "^0.4.2",
 		"iconify-icon": "^3.0.2",
 		"plugins": "link:better-auth/client/plugins",
 		"tailwind-merge": "^3.5.0",

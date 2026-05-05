@@ -17,7 +17,7 @@ export const auth = betterAuth({
 		additionalFields: {
 			paymentMethods: {
 				type: "json",
-				input: false
+				input: true
 			}
 		}
 	}

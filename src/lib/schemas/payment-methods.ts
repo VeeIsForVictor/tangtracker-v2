@@ -1,10 +1,10 @@
-import { array, object, picklist, string, type InferOutput } from "valibot";
+import { array, object, picklist, string, type InferOutput } from 'valibot';
 
 export const PaymentProvider = picklist(['Maya', 'GCash']);
 
 export const PaymentMethod = object({
-    provider: PaymentProvider,
-    contact: string()
+	provider: PaymentProvider,
+	contact: string()
 });
 
 export const PaymentMethods = array(PaymentMethod);

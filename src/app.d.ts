@@ -8,7 +8,7 @@ declare global {
 		interface Locals {
 			user?: User;
 			session?: Session;
-			db: typeof db
+			db: typeof db;
 		}
 
 		// interface Error {}

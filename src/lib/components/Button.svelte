@@ -5,7 +5,7 @@
 	import type { ClassValue } from 'svelte/elements';
 
 	interface Props {
-		disabled?: boolean
+		disabled?: boolean;
 		display?: 'filled' | 'outline';
 		className?: ClassValue;
 		type?: 'button' | 'submit';
@@ -13,9 +13,18 @@
 		children: Snippet;
 	}
 
-	const { disabled = $bindable(false), href = undefined, className = '', type = 'button', display, children }: Props = $props();
+	const {
+		disabled = $bindable(false),
+		href = undefined,
+		className = '',
+		type = 'button',
+		display,
+		children
+	}: Props = $props();
 
-	let setClass: ClassValue = $state('block flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg');
+	let setClass: ClassValue = $state(
+		'block flex flex-row items-center justify-center gap-x-2 p-2 w-full rounded-lg'
+	);
 
 	$effect(() => {
 		switch (display) {

@@ -2,7 +2,7 @@ import { createUpdateSchema } from 'drizzle-valibot'
 import { auth } from '$lib/server/auth.js'
 import { error, json, type RequestHandler } from '@sveltejs/kit'
 import { user } from '$lib/server/db/auth.schema.js'
-import { parseAsync, pick, ValiError } from 'valibot'
+import { parse, pick, ValiError } from 'valibot'
 
 const UpdateUserSchema = pick(
     createUpdateSchema(user),
@@ -22,7 +22,7 @@ export const PATCH: RequestHandler = async ({ locals, request }) => {
         error(401)
     let updateRequest;
     try {
-        updateRequest = await parseAsync(UpdateUserSchema, request.json());
+        updateRequest = parse(UpdateUserSchema, await request.json());
     } catch (e: unknown) {
         const err = e as ValiError<typeof UpdateUserSchema>
         return error(400, {message: err.message})

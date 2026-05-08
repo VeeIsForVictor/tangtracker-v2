@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from "$app/forms";
 	import Button from "$lib/components/Button.svelte";
 	import { createForm } from "@tanstack/svelte-form";
 
@@ -23,11 +24,8 @@
     
     <form
         class="flex flex-col gap-y-4 rounded-xl bg-slate-900/60 p-4"
-        onsubmit={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            form.handleSubmit()
-        }}
+        method="POST"
+        use:enhance
     >
         <form.Field name="borrower">
             {#snippet children(field)}

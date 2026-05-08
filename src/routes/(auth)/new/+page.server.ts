@@ -1,7 +1,6 @@
 import * as v from 'valibot'
 import { strict } from "assert/strict";
 import type { Actions, PageServerLoad } from "./$types";
-import { auth } from '$lib/server/auth';
 import { error, redirect } from '@sveltejs/kit';
 import { resolve } from '$app/paths';
 

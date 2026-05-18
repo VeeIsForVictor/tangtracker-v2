@@ -1,4 +1,6 @@
 <script lang="ts">
+    import * as v from 'valibot'
+
 	import { enhance } from '$app/forms';
 	import Button from '$lib/components/Button.svelte';
 	import { createForm } from '@tanstack/svelte-form';
@@ -12,7 +14,7 @@
 		defaultValues: {
 			lenderId,
 			borrower: '',
-			amountOwed: '',
+			amountOwed: 0,
 			description: ''
 		}
 	}));
@@ -25,7 +27,12 @@
 	</div>
 
 	<form class="flex flex-col gap-y-4 rounded-xl bg-slate-900/60 p-4" method="POST" use:enhance>
-		<form.Field name="borrower">
+		<form.Field 
+            name="borrower"
+            validators={{
+                onBlur: v.pipe(v.string(), v.nonEmpty())
+            }}
+        >
 			{#snippet children(field)}
 				<div class="flex flex-row items-center space-x-2">
 					<label for={field.name}> Borrower: </label>
@@ -33,15 +40,25 @@
 				</div>
 			{/snippet}
 		</form.Field>
-		<form.Field name="amountOwed">
+		<form.Field 
+            name="amountOwed"
+            validators={{
+                onBlur: v.pipe(v.number(), v.minValue(0.01))
+            }}
+        >
 			{#snippet children(field)}
 				<div class="flex flex-row items-center space-x-2">
 					<label for={field.name}> Amount: </label>
-					<input name={field.name} class="w-full rounded-lg bg-gray-800/20 p-1" />
+					<input name={field.name} class="w-full rounded-lg bg-gray-800/20 p-1" type="number" />
 				</div>
 			{/snippet}
 		</form.Field>
-		<form.Field name="description">
+		<form.Field 
+            name="description"
+            validators={{
+                onBlur: v.string()
+            }}
+        >
 			{#snippet children(field)}
 				<div class="flex flex-col space-y-2">
 					<label for={field.name}> Description: </label>
